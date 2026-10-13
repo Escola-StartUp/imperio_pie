@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin · Império Pie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--vinho:#5B0927;--ouro:#F6C400;--creme:#F6EDDA;--choc:#6B3F2A;--escuro:#3A1F1A;--r:28px;--ok:#2e7d32;--erro:#c62828}
+*{box-sizing:border-box;margin:0}
+body{font:400 16px/1.55 Nunito,system-ui,sans-serif;background:var(--creme);color:var(--escuro)}
+h1,h2,h3,.disp{font-family:'Baloo 2',system-ui,sans-serif;color:var(--vinho);line-height:1.15}
+h1{font-size:1.8rem}h2{font-size:1.4rem}h3{font-size:1.05rem}
+a{color:var(--vinho)}
+:focus-visible{outline:3px solid var(--ouro);outline-offset:2px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+.btn{display:inline-block;border:0;cursor:pointer;font:700 .95rem Nunito;background:var(--ouro);color:var(--vinho);padding:11px 22px;border-radius:99px;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.alt{background:var(--vinho);color:var(--creme)}
+.btn.ghost{background:transparent;box-shadow:inset 0 0 0 2px currentColor}
+.btn.sm{padding:7px 14px;font-size:.85rem}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+header.top{background:var(--vinho);color:var(--creme);padding:14px 0;position:sticky;top:0;z-index:10}
+header.top .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header.top .disp{color:var(--creme);margin-right:auto;font-size:1.2rem}
+header.top .disp b{color:var(--ouro)}
+main{padding:26px 0 60px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.tabs button{border:0;cursor:pointer;font:700 .92rem Nunito;background:#fff;color:var(--vinho);padding:9px 16px;border-radius:99px}
+.tabs button[aria-selected=true]{background:var(--vinho);color:var(--ouro)}
+.panel{background:#fff;border-radius:var(--r);padding:22px;box-shadow:0 14px 30px rgba(58,31,26,.1)}
+.panel h2{margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid #0001;vertical-align:middle}
+th{font:800 .78rem 'Baloo 2';color:var(--vinho);text-transform:uppercase;letter-spacing:.04em}
+tbody tr:hover{background:#FFF9EC}
+.tag{font:800 .75rem 'Baloo 2';padding:3px 10px;border-radius:99px;background:#eee;color:#555;text-transform:capitalize;white-space:nowrap}
+.st-pendente{background:var(--ouro);color:var(--vinho)}
+.st-confirmada{background:#7cb342;color:#fff}
+.st-em_producao{background:var(--choc);color:var(--creme)}
+.st-pronta{background:#1565c0;color:#fff}
+.st-entregue{background:var(--ok);color:#fff}
+.st-cancelada{background:#e0e0e0;color:#777}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+form.f{display:grid;gap:10px;max-width:520px}
+input,select,textarea{font:inherit;padding:10px 12px;border:2px solid #00000018;border-radius:12px;background:#fff;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--ouro);outline:none}
+label small{color:#666;display:block;font-size:.8rem}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.aviso{padding:10px 14px;border-radius:12px;margin-bottom:14px;font-weight:600}
+.aviso.erro{background:#fdecea;color:var(--erro)}
+.aviso.ok{background:#e8f5e9;color:var(--ok)}
+.aviso.info{background:#fff8e1;color:#8a6d00}
+.guard{display:grid;place-items:center;min-height:70vh;text-align:center}
+.escondido{display:none!important}
+.ck{display:grid;gap:12px;max-width:420px;margin:0 auto;text-align:left}
+.ck input{width:100%}
+.painel-detalhe{background:#FFF9EC;border-radius:18px;padding:14px;margin-top:8px;text-align:left;font-size:.9rem}
+@media(max-width:700px){table{font-size:.82rem}th:nth-child(3),td:nth-child(3){display:none}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <span class="disp">Império <b>Pie</b> · Admin</span>
+  <span id="whoami" style="font-size:.9rem"></span>
+  <button class="btn sm ghost" id="btnSair" style="color:var(--creme)">Sair</button>
+  <a class="btn sm" href="index.html">Ver site</a>
+</div></header>
+
+<main class="wrap">
+
+  <section id="guard" class="guard">
+    <div class="ck">
+      <h1>Área administrativa</h1>
+      <p class="aviso info">Entre com a conta de administrador para continuar.</p>
+      <form id="fLogin" class="ck">
+        <input type="email" id="li_email" placeholder="E-mail" autocomplete="email" required aria-label="E-mail">
+        <input type="password" id="li_senha" placeholder="Senha" autocomplete="current-password" required aria-label="Senha">
+        <button class="btn alt">Entrar</button>
+      </form>
+      <p><a href="index.html">← Voltar para a loja</a></p>
+    </div>
+  </section>
+
+  <section id="app" class="escondido">
+    <div class="tabs" role="tablist">
+      <button role="tab" data-tab="pedidos" aria-selected="true">Pedidos</button>
+      <button role="tab" data-tab="tortas">Tortas</button>
+      <button role="tab" data-tab="precos">Preços</button>
+      <button role="tab" data-tab="promocoes">Promoções</button>
+      <button role="tab" data-tab="opcoes">Opções do configurador</button>
+      <button role="tab" data-tab="usuarios">Usuários</button>
+      <button role="tab" data-tab="config">Configurações</button>
+      <button role="tab" data-tab="auditoria">Auditoria</button>
+    </div>
+    <div id="msg"></div>
+    <div id="painel" class="panel"></div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="public/js/config.js"></script>
+<script src="public/js/db.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

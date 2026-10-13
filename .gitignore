@@ -1,0 +1,24 @@
+# nada de segredo no repositório
+.env
+.env.*
+*.local.js
+config.local.js
+
+# supabase CLI local
+supabase/.temp
+.branches
+
+# artefatos de teste
+node_modules/
+test_*.cjs
+dbg*.cjs
+fix-encoding*.cjs
+inspect*.cjs
+extract.cjs
+inline.js
+app.js
+
+# ferramentas de design (não fazem parte do site)
+*.py
+codigo_SVG.html
+test_svg_preview.html

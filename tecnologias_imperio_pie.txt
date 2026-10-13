@@ -1,0 +1,29 @@
+Roteiro — Tecnologias da landing page Império Pie
+
+Apresentação
+
+Tudo começou com uma ideia: um prompt no Claude. Ali nasceu a primeira versão da landing page da Império Pie — um site em português, pensado para apresentar o produto, permitir montar a torta e fechar pedidos. Mas o projeto não parou aí: ele foi transferido para o Antigravity, onde continuamos evoluindo design, textos e funcionalidades na prática.
+
+Aqui na conversa, usamos o modelo "Fledge Alpha Free" dentro do Opencode. Foi aí que aplicamos a maior parte das iterações: mudar cor do hero, trocar fontes, ajustar logo, tamanho de coroas, separadores do strip e caminhos das imagens.
+
+Quais tecnologias entraram na criação?
+
+1. Um único arquivo index.html
+O site inteiro vive em index.html. Não tem framework de build, não tem npm, não tem servidor: é só abrir o arquivo no navegador. HTML semântico (header, main, sections, footer, dialog), CSS dentro de uma tag <style>, e JavaScript puro dentro de uma tag <script> no fim do body.
+
+2. CSS puro, com variáveis e animações
+Usamos variáveis CSS (:root) para a paleta: vinho, ouro, creme, chocolate e escuro. Isso deixa trocar de cor um detalhe. O layout usa grid e flexbox, cantos arredondados, transições suaves e duas animações em keyframes: o logo flutuando (bob) e a faixa marquee passando (mq). Também tem media query para celular.
+
+3. JavaScript puro, sem dependência
+O "Monte a sua torta" funciona com JavaScript na própria página: o usuário escolhe base, recheio, cobertura e tamanho, e o preço em reais é recalculado na hora. O desenho da torta é um SVG que muda de cor conforme a escolha. Tem carrinho em memória, com botões de diminuir/aumentar quantidade, e o checkout monta uma mensagem e abre o WhatsApp (wa.me). O respeito à LGPD fica no localStorage: só os cookies necessários ficam ativos até a pessoa aceitar.
+
+4. Fontes do Google Fonts
+Baloo 2 para títulos (arredondada e robusta), Nunito para textos, e Caveat para os acentos manuscritos tipo "Mais que torta, é Império." e a faixa marquee.
+
+5. Imagens e logo
+O logo veio como imagem, extraído do hero e reutilizado na navbar e no rodapé. As imagens ficam na pasta public/, com caminhos relativos no CSS e no HTML.
+
+6. Inteligência artificial no processo
+Claude foi o ponto de partida. Depois, no Opencode com Fledge Alpha Free, fizemos o refinamento do visual: cores, contrastes, tamanho de elementos, separadores do marquee, ajustes de layout.
+
+No final, toda a landing page é uma mistura de HTML, CSS, JavaScript e um pouco de IA — aberta em qualquer navegador, sem servidor. Império Pie: onde o brownie ganha uma coroa.
